@@ -11,9 +11,9 @@ import * as ImagePicker from 'expo-image-picker';
 /* PART 5 — remove these markers to enable the image-manipulator import.
 import * as ImageManipulator from 'expo-image-manipulator';
 */
-/* PART 6 — remove these markers to enable the media-library import.
-import * as MediaLibrary from 'expo-media-library';
-*/
+import { savePhoto } from './photoLibrary';
+
+export { savePhoto };
 
 // ======================================================
 // PART 2 — PICK A PHOTO
@@ -85,19 +85,9 @@ export async function rotatePhoto(uri) {
 // PART 6 — SAVE TO THE DEVICE PHOTO LIBRARY
 //
 // WHY: Camera and edited image URIs may only live in the app cache.
-// PRODUCT QUESTION: Which permission does this save action actually need?
-// DO: Uncomment the MediaLibrary import and implementation below.
-// VERIFY: Save a photo and find the new copy in Photos/Gallery.
+// PRODUCT QUESTION: How should saving differ between a phone and a browser?
+// DO: Enable the Part 6 implementations in photoLibrary.native.js and
+//     photoLibrary.web.js. Keep expo-media-library out of shared photoService.js.
+// VERIFY: Native builds save to Photos/Gallery; web downloads a copy.
 // NEXT: Run npm run verify and review the privacy notes in README.md.
 // ======================================================
-/** @returns {Promise<{id: string}>} */
-export async function savePhoto(uri) {
-  /*
-  const permission = await MediaLibrary.requestPermissionsAsync(true, ['photo']);
-  if (!permission.granted) {
-    throw new Error('Allow photo saving to continue.');
-  }
-  return MediaLibrary.Asset.create(uri);
-  */
-  throw new Error('PART 6 is not complete: save a photo-library copy.');
-}

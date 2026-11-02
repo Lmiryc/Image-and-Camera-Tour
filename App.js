@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import {
   FlatList,
   Image,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -97,8 +98,10 @@ export default function App() {
     setBusy(true);
     setStatus('');
     try {
-      await savePhoto(selectedPhoto.editedUri || selectedPhoto.uri);
-      setStatus('Saved a copy to your photo library.');
+      const savedPhoto = await savePhoto(selectedPhoto.editedUri || selectedPhoto.uri);
+      setStatus(savedPhoto.destination === 'download'
+        ? 'Downloaded a photo copy.'
+        : 'Saved a copy to your photo library.');
     } catch (error) {
       setStatus(error.message || 'The photo could not be saved.');
     } finally {
@@ -154,7 +157,7 @@ export default function App() {
                   <Text style={styles.secondaryText}>Reset</Text>
                 </Pressable>
                 <Pressable accessibilityRole="button" disabled={busy} onPress={saveSelectedPhoto} style={styles.primaryButton}>
-                  <Text style={styles.primaryText}>Save to Photos</Text>
+                  <Text style={styles.primaryText}>{Platform.OS === 'web' ? 'Download photo' : 'Save to Photos'}</Text>
                 </Pressable>
               </View>
             </View>

@@ -33,3 +33,10 @@ test('main-branch CI reports progress and runs starter infrastructure checks', (
   expect(workflow).toContain('test:infrastructure');
   expect(workflow).toContain('npm run verify');
 });
+
+test('shared and web photo services do not import the native media-library module', () => {
+  const sharedService = fs.readFileSync(path.join(root, 'src/services/photoService.js'), 'utf8');
+  const webService = fs.readFileSync(path.join(root, 'src/services/photoLibrary.web.js'), 'utf8');
+  expect(sharedService).not.toMatch(/import\s+.*from\s+['"]expo-media-library['"]/);
+  expect(webService).not.toMatch(/import\s+.*from\s+['"]expo-media-library['"]/);
+});

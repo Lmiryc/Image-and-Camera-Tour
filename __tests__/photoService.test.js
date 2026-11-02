@@ -54,7 +54,7 @@ test('rotation runs the new ImageManipulator context API and saves a copy', asyn
 });
 
 test('saving requests write-only photo access and creates an asset', async () => {
-  await expect(savePhoto('file:///photo.jpg')).resolves.toEqual({ id: 'saved-1' });
+  await expect(savePhoto('file:///photo.jpg')).resolves.toEqual({ id: 'saved-1', destination: 'library' });
   expect(MediaLibrary.requestPermissionsAsync).toHaveBeenCalledWith(true, ['photo']);
   expect(MediaLibrary.Asset.create).toHaveBeenCalledWith('file:///photo.jpg');
 
