@@ -9,7 +9,7 @@
 // ======================================================
 /** @returns {Promise<{uri: string, fileName: string, destination: 'download'}>} */
 export async function savePhoto(uri) {
-  /*
+  
   if (typeof document === 'undefined' || !document.body) {
     throw new Error('This browser cannot download the photo from this screen.');
   }
@@ -24,6 +24,6 @@ export async function savePhoto(uri) {
   document.body.removeChild(link);
 
   return { uri, fileName, destination: 'download' };
-  */
+  
   throw new Error('PART 6 is not complete: download a photo copy in the browser.');
 }

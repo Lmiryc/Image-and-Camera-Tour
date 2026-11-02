@@ -39,11 +39,11 @@ export default function App() {
       setStatus(`PART 4 is next: add the ${photo.source.toLowerCase()} image to your collection.`);
 
       // PART 4 — Uncomment these lines to add the picked photo to the collection.
-      /*
+      
       setPhotos(currentPhotos => [photo, ...currentPhotos]);
       setSelectedPhoto(photo);
       setStatus('Photo added to your collection.');
-      */
+      
     } catch (error) {
       setStatus(error.message || 'The photo could not be selected.');
     } finally {
@@ -66,11 +66,11 @@ export default function App() {
       setStatus('Photo captured to the app cache. Part 4 adds it to your collection.');
 
       // PART 4 — Uncomment these lines to add the captured photo to the collection.
-      /*
+      
       setPhotos(currentPhotos => [photo, ...currentPhotos]);
       setSelectedPhoto(photo);
       setStatus('Photo added to your collection.');
-      */
+      
     } catch (error) {
       setStatus(error.message || 'The photo could not be captured.');
     } finally {
@@ -111,13 +111,13 @@ export default function App() {
 
   function removePhoto(photoToRemove) {
     // PART 4 — Uncomment this block to remove a photo from this app's collection.
-    /*
+    
     setPhotos(currentPhotos => currentPhotos.filter(photo => photo.id !== photoToRemove.id));
     setSelectedPhoto(currentPhoto => currentPhoto?.id === photoToRemove.id ? null : currentPhoto);
     setStatus('Photo removed from this collection. The device original is unchanged.');
-    */
+    
     // Remove this starter message after enabling the removal block above.
-    setStatus('PART 4 is not complete: remove a photo from the app collection.');
+    //setStatus('PART 4 is not complete: remove a photo from the app collection.');
   }
 
   return (

@@ -5,12 +5,11 @@
 // directs you. Every starter stub throws an actionable message so unfinished
 // work is visible without breaking app startup or module resolution.
 // ======================================================
-/* PART 2 — remove these markers to enable the picker import.
+// PART 2 — remove these markers to enable the picker import.
 import * as ImagePicker from 'expo-image-picker';
-*/
-/* PART 5 — remove these markers to enable the image-manipulator import.
+// PART 5 — remove these markers to enable the image-manipulator import.
 import * as ImageManipulator from 'expo-image-manipulator';
-*/
+
 import { savePhoto } from './photoLibrary';
 
 export { savePhoto };
@@ -26,7 +25,7 @@ export { savePhoto };
 // ======================================================
 /** @returns {Promise<{assetId?: string | null, uri: string} | null>} */
 export async function pickPhoto() {
-  /*
+  
   const result = await ImagePicker.launchImageLibraryAsync({
     mediaTypes: ['images'],
     quality: 1,
@@ -34,7 +33,7 @@ export async function pickPhoto() {
 
   if (result.canceled) return null;
   return result.assets[0];
-  */
+  
   throw new Error('PART 2 is not complete: open the system photo picker.');
 }
 
@@ -49,12 +48,11 @@ export async function pickPhoto() {
 // ======================================================
 /** @returns {Promise<{uri: string}>} */
 export async function capturePhoto(cameraRef) {
-  /*
+  
   if (!cameraRef?.current) {
     throw new Error('Wait for the camera preview before taking a photo.');
   }
   return cameraRef.current.takePictureAsync({ quality: 0.85 });
-  */
   throw new Error('PART 3 is not complete: capture a photo from the camera preview.');
 }
 
@@ -69,7 +67,7 @@ export async function capturePhoto(cameraRef) {
 // ======================================================
 /** @returns {Promise<{uri: string}>} */
 export async function rotatePhoto(uri) {
-  /*
+  
   const context = ImageManipulator.ImageManipulator.manipulate(uri);
   context.rotate(90);
   const renderedImage = await context.renderAsync();
@@ -77,7 +75,7 @@ export async function rotatePhoto(uri) {
     compress: 0.85,
     format: ImageManipulator.SaveFormat.JPEG,
   });
-  */
+  
   throw new Error('PART 5 is not complete: create a rotated copy of the image.');
 }
 
