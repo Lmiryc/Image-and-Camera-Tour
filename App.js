@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import {
   FlatList,
   Image,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -145,7 +146,7 @@ export default function App() {
                   <Text style={styles.secondaryText}>Reset</Text>
                 </Pressable>
                 <Pressable accessibilityRole="button" disabled={busy} onPress={saveSelectedPhoto} style={styles.primaryButton}>
-                  <Text style={styles.primaryText}>Save to Photos</Text>
+                  <Text style={styles.primaryText}>{Platform.OS === 'web' ? 'Download photo' : 'Save to Photos'}</Text>
                 </Pressable>
               </View>
             </View>
