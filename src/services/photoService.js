@@ -5,15 +5,9 @@
 // directs you. Every starter stub throws an actionable message so unfinished
 // work is visible without breaking app startup or module resolution.
 // ======================================================
-/* PART 2 — remove these markers to enable the picker import.
 import * as ImagePicker from 'expo-image-picker';
-*/
-/* PART 5 — remove these markers to enable the image-manipulator import.
 import * as ImageManipulator from 'expo-image-manipulator';
-*/
-/* PART 6 — remove these markers to enable the media-library import.
 import * as MediaLibrary from 'expo-media-library';
-*/
 
 // ======================================================
 // PART 2 — PICK A PHOTO
@@ -26,7 +20,6 @@ import * as MediaLibrary from 'expo-media-library';
 // ======================================================
 /** @returns {Promise<{assetId?: string | null, uri: string} | null>} */
 export async function pickPhoto() {
-  /*
   const result = await ImagePicker.launchImageLibraryAsync({
     mediaTypes: ['images'],
     quality: 1,
@@ -34,8 +27,6 @@ export async function pickPhoto() {
 
   if (result.canceled) return null;
   return result.assets[0];
-  */
-  throw new Error('PART 2 is not complete: open the system photo picker.');
 }
 
 // ======================================================
@@ -49,13 +40,10 @@ export async function pickPhoto() {
 // ======================================================
 /** @returns {Promise<{uri: string}>} */
 export async function capturePhoto(cameraRef) {
-  /*
   if (!cameraRef?.current) {
     throw new Error('Wait for the camera preview before taking a photo.');
   }
   return cameraRef.current.takePictureAsync({ quality: 0.85 });
-  */
-  throw new Error('PART 3 is not complete: capture a photo from the camera preview.');
 }
 
 // ======================================================
@@ -69,7 +57,6 @@ export async function capturePhoto(cameraRef) {
 // ======================================================
 /** @returns {Promise<{uri: string}>} */
 export async function rotatePhoto(uri) {
-  /*
   const context = ImageManipulator.ImageManipulator.manipulate(uri);
   context.rotate(90);
   const renderedImage = await context.renderAsync();
@@ -77,8 +64,6 @@ export async function rotatePhoto(uri) {
     compress: 0.85,
     format: ImageManipulator.SaveFormat.JPEG,
   });
-  */
-  throw new Error('PART 5 is not complete: create a rotated copy of the image.');
 }
 
 // ======================================================
@@ -92,12 +77,9 @@ export async function rotatePhoto(uri) {
 // ======================================================
 /** @returns {Promise<{id: string}>} */
 export async function savePhoto(uri) {
-  /*
   const permission = await MediaLibrary.requestPermissionsAsync(true, ['photo']);
   if (!permission.granted) {
     throw new Error('Allow photo saving to continue.');
   }
   return MediaLibrary.Asset.create(uri);
-  */
-  throw new Error('PART 6 is not complete: save a photo-library copy.');
 }

@@ -7,10 +7,11 @@ A small Expo + React Native project for learning the camera, photo picker, image
 ### Starter and completion
 
 - `main` is the student starter. It launches a useful Photo Lab screen, keeps every lesson syntactically valid, and marks unfinished behavior with searchable parts and clear TODO stubs. Feature tests intentionally fail until the matching code is enabled. `npm run check-progress:report` reports unfinished parts but exits successfully for starter CI; `npm run check-progress` exits nonzero until all six parts are complete.
+- `complete` is the working reference implementation. It enables all six parts and passes `npm run verify`.
 - The GitHub Action reports progress and runs infrastructure-only tests on `main`. On `complete` it runs full verification; on other branches it runs full verification so student work receives red-to-green feedback.
 - Full local verification is `npm run verify`. It runs the progress checker, lint, typecheck, and mocked test suite. Run `npm test` after each lesson to see which feature behaviors remain.
 
-The starter deliberately has unfinished behavior. A `main` CI pass means its structure and progress reporting work, not that the tour is complete. Full completion is confirmed when `npm run verify` passes locally or on a student/reference branch.
+Switch between the starter and reference with `git switch main` and `git switch complete`. A `main` CI pass means its structure and progress reporting work, not that the tour is complete. Full completion is confirmed when `npm run verify` passes locally or on a student/reference branch.
 
 ## Setup
 
@@ -25,7 +26,7 @@ No `.env` file, API key, endpoint, Firebase project, or network connection is ne
 
 ## The tour
 
-Complete **Parts 1–6 in order**. Search for the exact `PART N — ...` heading. Every part includes why the concept matters, a product question, exact file and code-block instructions, a quick verification, and the next heading. If a DO instruction says to uncomment a block, remove its opening `/*` and closing `*/` markers together; do not uncomment unrelated parts early.
+On `main`, complete **Parts 1–6 in order**. Search for the exact `PART N — ...` heading. Every part includes why the concept matters, a product question, exact file and code-block instructions, a quick verification, and the next heading. If a DO instruction says to uncomment a block, remove its opening `/*` and closing `*/` markers together; do not uncomment unrelated parts early. The `complete` branch shows all lesson code enabled.
 
 After each part, run:
 
