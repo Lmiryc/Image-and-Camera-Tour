@@ -91,8 +91,10 @@ export default function App() {
     setBusy(true);
     setStatus('');
     try {
-      await savePhoto(selectedPhoto.editedUri || selectedPhoto.uri);
-      setStatus('Saved a copy to your photo library.');
+      const savedPhoto = await savePhoto(selectedPhoto.editedUri || selectedPhoto.uri);
+      setStatus(savedPhoto.destination === 'download'
+        ? 'Downloaded a photo copy.'
+        : 'Saved a copy to your photo library.');
     } catch (error) {
       setStatus(error.message || 'The photo could not be saved.');
     } finally {

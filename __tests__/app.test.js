@@ -37,7 +37,7 @@ beforeEach(() => {
   pickPhoto.mockResolvedValue({ assetId: 'photo-1', uri: 'file:///picked.jpg' });
   capturePhoto.mockResolvedValue({ uri: 'file:///captured.jpg' });
   rotatePhoto.mockResolvedValue({ uri: 'file:///rotated.jpg' });
-  savePhoto.mockResolvedValue({ id: 'saved-photo-1' });
+  savePhoto.mockResolvedValue({ id: 'saved-photo-1', destination: 'library' });
 });
 
 test('shows a useful empty Photo Lab starter screen', async () => {
@@ -83,4 +83,14 @@ test('captured photos can be rotated, reset, and saved to Photos', async () => {
   await fireEvent.press(screen.getByRole('button', { name: 'Save to Photos' }));
   await waitFor(() => expect(savePhoto).toHaveBeenCalledWith('file:///captured.jpg'));
   expect(await screen.findByText('Saved a copy to your photo library.')).toBeTruthy();
+});
+
+test('reports a download when the browser save implementation is used', async () => {
+  savePhoto.mockResolvedValueOnce({ uri: 'data:image/jpeg;base64,photo-data', destination: 'download' });
+  const screen = await render(<App />);
+  await fireEvent.press(screen.getByRole('button', { name: 'Choose a photo' }));
+  expect(await screen.findByText('1 photo')).toBeTruthy();
+
+  await fireEvent.press(screen.getByRole('button', { name: 'Save to Photos' }));
+  expect(await screen.findByText('Downloaded a photo copy.')).toBeTruthy();
 });

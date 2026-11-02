@@ -80,6 +80,7 @@ function checkProgress() {
   const app = parse('App.js');
   const camera = parse('src/components/CameraPanel.js');
   const service = parse('src/services/photoService.js');
+  const photoLibrary = parse('src/services/photoLibrary.native.js');
   const checks = [
     {
       title: 'PART 1: Runnable starter screen and safe-area root',
@@ -119,10 +120,10 @@ function checkProgress() {
     },
     {
       title: 'PART 6: Photo is saved with write-only library permission',
-      complete: hasCall(service, 'requestPermissionsAsync')
-        && hasCall(service, 'create')
-        && hasMember(service, 'MediaLibrary', 'Asset'),
-      guidance: 'In savePhoto(), request write-only photo permission, reject denied access, and create a media-library asset from the URI.',
+      complete: hasCall(photoLibrary, 'requestPermissionsAsync')
+        && hasCall(photoLibrary, 'create')
+        && hasMember(photoLibrary, 'MediaLibrary', 'Asset'),
+      guidance: 'In src/services/photoLibrary.native.js, request write-only photo permission, reject denied access, and create a media-library asset from the URI.',
     },
   ];
 

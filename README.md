@@ -20,7 +20,7 @@ npm install
 npm start
 ```
 
-Use a physical iOS or Android device for camera capture. The iOS Simulator has no camera. The Expo SDK 57 versions of `expo-camera`, `expo-image-picker`, `expo-image-manipulator`, and `expo-media-library` are installed in the starter; they are included in Expo Go. Use `npx expo install` if you add or change Expo SDK modules.
+Use a physical iOS or Android device for native camera capture. The iOS Simulator has no camera. To use a laptop webcam, run the web build in a browser with camera permission; browser saves download the image instead of using the native photo library. The Expo SDK 57 versions of `expo-camera`, `expo-image-picker`, `expo-image-manipulator`, and `expo-media-library` are installed in the starter; they are included in Expo Go. Use `npx expo install` if you add or change Expo SDK modules.
 
 No `.env` file, API key, endpoint, Firebase project, or network connection is needed for the local tour. `.env.example` contains placeholders for a possible future Firebase Storage extension only. Copy it to `.env` only if you are experimenting with that extension. `EXPO_PUBLIC_*` settings are embedded in the client app and are not secrets; never put a private server key in them.
 
@@ -82,10 +82,10 @@ The progress checker parses active JavaScript with Babel. It ignores commented c
 - **WHY:** Camera and image-manipulator results can be temporary cache files; a system-library copy is a way to keep a photo beyond the app session.
 - **PRODUCT QUESTION:** Which permission is needed to save a photo without browsing the person’s full library?
 - **DO:** In `src/services/photoService.js`, uncomment the Part 6 `MediaLibrary` import and the implementation in `savePhoto()`. The code requests write-only photo access.
-- **VERIFY:** Save an image and confirm it appears in Photos/Gallery. Deny permission once and confirm the app displays an error.
+- **VERIFY:** On native, save an image and confirm it appears in Photos/Gallery; deny permission once and confirm the app displays an error. On web, confirm the browser downloads a `photo-lab.jpg` copy.
 - **NEXT:** Run `npm run verify` and review the privacy notes below.
 
-The URI returned from a camera capture or image transform may refer to a temporary cache file. Saving through MediaLibrary creates a copy in the system photo library. The app does not delete originals from the device.
+The URI returned from a camera capture or image transform may refer to a temporary cache file. On native, saving through MediaLibrary creates a copy in the system photo library; on web, the browser downloads a copy. The app does not delete originals from the device.
 
 ## Testing and progress
 
