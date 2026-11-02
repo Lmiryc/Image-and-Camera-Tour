@@ -6,6 +6,31 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Photo Lab to use the camera to take photos.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Photo Lab to choose photos for your collection.",
+          "cameraPermission": "Allow Photo Lab to use the camera to take photos.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": false,
+          "savePhotosPermission": "Allow Photo Lab to save edited photos.",
+          "granularPermissions": ["photo"]
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true
     },

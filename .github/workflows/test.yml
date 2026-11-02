@@ -1,0 +1,37 @@
+name: Verify Photo & Camera Tour
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Report starter progress
+        if: github.ref_name == 'main' || github.base_ref == 'main'
+        run: npm run check-progress:report
+
+      - name: Check starter infrastructure
+        if: github.ref_name == 'main' || github.base_ref == 'main'
+        run: npm run test:infrastructure
+
+      - name: Verify completed tour
+        if: github.ref_name == 'complete' || github.base_ref == 'complete'
+        run: npm run verify
+
+      - name: Verify student work on other branches
+        if: github.ref_name != 'main' && github.base_ref != 'main' && github.ref_name != 'complete' && github.base_ref != 'complete'
+        run: npm run verify
